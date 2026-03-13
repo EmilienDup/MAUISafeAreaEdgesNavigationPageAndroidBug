@@ -1,0 +1,50 @@
+# build
+**/obj/
+**/bin/
+
+# VS
+.vs/
+.vscode/
+packages/
+*.user
+
+# MONO
+mono_crash*.json
+
+# Mac
+.DS_Store
+
+# node
+**/node_modules/
+package-lock.json
+script/ci/results/
+
+# Rider
+**/.idea/
+
+# Fody
+*.xsd
+
+# ignore Xamarin.Android Resource.Designer.cs files
+**/*.Droid/**/[Rr]esource.[Dd]esigner.cs
+**/*.Android/**/[Rr]esource.[Dd]esigner.cs
+**/Android/**/[Rr]esource.[Dd]esigner.cs
+**/Droid/**/[Rr]esource.[Dd]esigner.cs
+
+# Ignore configuration override
+*.config.override.json
+
+# Ignore outputs
+/output/**
+**/TestResults/**
+
+
+# Ignore debug webview source folder  
+/script/debug/webviews/src
+
+# Ignore fastlane output
+/fastlane/report.xml
+
+# Ignore profiling files
+*.speedscope
+*.gcdump

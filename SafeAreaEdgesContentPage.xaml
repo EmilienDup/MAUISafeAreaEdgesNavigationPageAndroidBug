@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="MAUISafeAreaEdgesNavigationPageAndroidBug.SafeAreaEdgesContentPage"
+    NavigationPage.HasNavigationBar="False"
+    NavigationPage.HasBackButton="False"
+    SafeAreaEdges="None"
+    x:Name="Page">
+    
+    <Border
+        Stroke="Red"
+        StrokeThickness="2"
+        Margin="2">
+        <VerticalStackLayout>
+            <Label
+                Text="{Binding SafeAreaEdges, 
+                            Source={x:Reference Page}, 
+                            StringFormat='{} SafeAreaEdges: {0}'}"/>
+            <Label
+                Text="{Binding Parent, 
+                            Source={x:Reference Page}, 
+                            StringFormat='{} Parent: {0}'}"/>
+            <Button Text="Back"
+                    Clicked="BackButton_OnClicked"/>
+        </VerticalStackLayout>
+    </Border>
+</ContentPage>
