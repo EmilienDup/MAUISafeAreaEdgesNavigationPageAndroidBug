@@ -5,19 +5,32 @@ public class MainPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        
+
+        this.NavigateToPage();
+    }
+
+    private void NavigateToPage()
+    {
         MainThread.InvokeOnMainThreadAsync(async () =>
         {
-            var setAsMainPage = await this.DisplayAlertAsync("Launcher", "How to navigate to the testing page?", "Set as main page", "Navigation");
+            string action = await DisplayActionSheetAsync("Navigation Mode", "Cancel", null, "Main page", "Push to Stack", "Modal");
 
             var page = new SafeAreaEdgesContentPage();
-            if (setAsMainPage)
+            if (action == "Main page")
             {
                 Application.Current?.Windows[0].Page = page;
             }
-            else
+            else if (action == "Push to Stack")
             {
                 await this.Navigation.PushAsync(page);
+            }
+            else if (action == "Modal")
+            {
+                await this.Navigation.PushModalAsync(page);
+            }
+            else
+            {
+                this.NavigateToPage();
             }
         });
     }
